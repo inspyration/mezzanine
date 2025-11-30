@@ -1,0 +1,4 @@
+<div id="{{ widget.attrs.id }}_div">
+    {% include "django/forms/widgets/input.html" %}
+    <output for="{{ widget.attrs.id }}" id="{{ widget.attrs.id }}_value" aria-hidden="true"></output>
+</div>
