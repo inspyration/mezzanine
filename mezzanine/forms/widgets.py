@@ -10,12 +10,19 @@ class NoteWidget(Input):
     input_type = "range"
     template_name = "pages/forms/widgets/range.html"
 
-    def __init__(self, attrs=None, min_value=1, max_value=5, step=1):
+    def __init__(self, attrs=None, choices=()):
         super().__init__(attrs=attrs)
-        value = self.attrs.get("value", min_value)
+        try:
+            if len(choices):
+                self.choices = {1: "No choices"}
+            else:
+                self.choices = {int(k.strip()): v.strip() for k, v in choices.split("-")}
+        except:
+            self.choices = {1: "Syntax error in choices"}
+        value = self.attrs.get("value", (min_value := min(self.choices)))
         self.attrs |= {
             "min": min_value,
-            "max": max_value,
-            "step": step,
+            "max": max(self.choices),
+            "step": 1,
             "value": value,
         }
