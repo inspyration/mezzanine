@@ -122,6 +122,7 @@ class FormForForm(forms.ModelForm):
         Dynamically add each of the form fields for the given form model
         instance and its related field model instances.
         """
+        import pdb; pdb.set_trace()
         self.form = form
         self.form_fields = form.fields.visible()
         initial = kwargs.pop("initial", {})
@@ -259,7 +260,6 @@ class EntriesForm(forms.Form):
         self.entry_time_name = str(FormEntry._meta.get_field("entry_time").verbose_name)
         super().__init__(*args, **kwargs)
         for field in self.form_fields:
-            import pdb; pdb.set_trace()
             field_key = "field_%s" % field.id
             # Checkbox for including in export.
             self.fields["%s_export" % field_key] = forms.BooleanField(
