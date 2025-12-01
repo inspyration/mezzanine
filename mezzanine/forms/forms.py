@@ -187,6 +187,9 @@ class FormForForm(forms.ModelForm):
                 years = list(range(_now.year, _now.year - 120, -1))
                 self.fields[field_key].widget.years = years
 
+            if field.field_type == fields.RANGE:
+                self.fields[field_key].widget.set_choices(field.get_choices())
+
             # Add identifying type attr to the field for styling.
             setattr(self.fields[field_key], "type", field_class.__name__.lower())
             if (
