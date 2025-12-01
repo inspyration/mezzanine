@@ -259,6 +259,7 @@ class EntriesForm(forms.Form):
         self.entry_time_name = str(FormEntry._meta.get_field("entry_time").verbose_name)
         super().__init__(*args, **kwargs)
         for field in self.form_fields:
+            import pdb; pdb.set_trace()
             field_key = "field_%s" % field.id
             # Checkbox for including in export.
             self.fields["%s_export" % field_key] = forms.BooleanField(
