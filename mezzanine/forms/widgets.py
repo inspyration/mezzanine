@@ -2,6 +2,8 @@ from django.forms.widgets import Widget, Input
 
 
 class TitleWidget(Widget):
+    hide_label = True
+
     def render(self, name, value, attrs=None, renderer=None):
         return f'<h3 class="form-title">{value}</h3>'
 

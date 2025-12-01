@@ -27,6 +27,15 @@ DOB = 15
 TITLE = 16
 RANGE = 17
 
+
+class TitleField(forms.CharField):
+    pass
+
+
+class RangeField(forms.CharField):
+    pass
+
+
 # Names for all available field types.
 NAMES = (
     (TEXT, _("Single line text")),
@@ -65,8 +74,8 @@ CLASSES = {
     HIDDEN: forms.CharField,
     NUMBER: forms.FloatField,
     URL: forms.URLField,
-    TITLE: forms.CharField,
-    RANGE: forms.CharField,
+    TITLE: TitleField,
+    RANGE: RangeField,
 }
 
 # Widgets for field types where a specialised widget is required.

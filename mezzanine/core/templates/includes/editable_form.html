@@ -7,9 +7,9 @@
     {% csrf_token %}
     {% for field in editable_form %}
     <p{% if field.is_hidden %} style="display:none;"{% endif %}>
-        <span class="helptext">{{ field.help_text }}</span>
         {{ field.label_tag }}<br />{{ field }}{{ field.errors }}
         {% if field.help_text %}
+        <span class="helptext">{{ field.help_text }}</span>
         {% endif %}
     </p>
     {% endfor %}
