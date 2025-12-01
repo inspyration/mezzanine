@@ -11,6 +11,7 @@ class NoteWidget(Input):
     template_name = "pages/forms/widgets/range.html"
 
     def __init__(self, attrs=None, choices=()):
+        print(attrs, choices)
         super().__init__(attrs=attrs)
         try:
             if len(choices):
